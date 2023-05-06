@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx6lsr107lvi4"]
+
+[ext_resource type="Shader" path="res://RayMarching.gdshader" id="1_hjt50"]
+[ext_resource type="Material" path="res://BasicSpatial.material" id="2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypkse"]
+render_priority = 0
+shader = ExtResource("1_hjt50")
+
+[sub_resource type="BoxMesh" id="1"]
+material = SubResource("ShaderMaterial_ypkse")
+size = Vector3(2, 2.4, 3)
+
+[sub_resource type="PlaneMesh" id="3"]
+material = ExtResource("2")
+size = Vector2(10, 10)
+subdivide_width = 10
+subdivide_depth = 10
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00298214, -4.76837e-07, -0.0129488)
+
+[node name="RayMarchedScene" type="MeshInstance3D" parent="."]
+mesh = SubResource("1")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5, -4)
+visible = false
+shadow_enabled = true
+omni_range = 20.0
+
+[node name="OmniLight2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.28712, 3.95161, 0.627131)
+visible = false
+shadow_enabled = true
+omni_range = 20.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.873619, -0.439609, -0.208648, -0.0305545, -0.477488, 0.878107, -0.48565, -0.760756, -0.430575, -3.06888, 3.55474, -4)
+shadow_enabled = true
+spot_range = 31.7566
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.5, 0.346574, -0.793654, 0, 0.916433, 0.400189, 0.866025, -0.200095, 0.458216, -7.20601, 5.11235, 4.27364)

@@ -1,0 +1,16 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+
+void fragment() {
+	ALBEDO = vec3(.2, .8, 0.);
+}
+
+void light() {
+	DIFFUSE_LIGHT += dot(NORMAL, LIGHT) * ATTENUATION * ALBEDO;
+	
+	// DEBUG
+	//DIFFUSE_LIGHT = ALBEDO;
+}
+"
